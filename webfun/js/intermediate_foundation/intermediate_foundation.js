@@ -66,14 +66,13 @@ function returnSecondToLargest(arr){
 
         for (var i=2;i<arr.length;i++){
         if (arr[i]>=largest){
-            if (largest>secondLargest){
-                secondLargest=largest}
+            secondLargest=largest
             largest=arr[i]
         }
     }
     return secondLargest
 }
-console.log(returnSecondToLargest([1,2,3,10]))
+console.log(returnSecondToLargest([1,2,3,10])) 
 console.log(returnSecondToLargest([1,2,3,10,10]))
 
 // Double Trouble: Create a function that changes a given array to list each existing element twice, retaining original order.  Convert [4, "Ulysses", 42, false] to [4,4, "Ulysses", "Ulysses", 42, 42, false, false].

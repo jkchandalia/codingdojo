@@ -1,148 +1,193 @@
+var arr_big = [1,2,3,10]
+var arr = [1,2,3,10]
 
-// Get 1 to 255 - Write a function that returns an array with all the numbers from 1 to 255.
-function arr1to255(){
-    var arr = []
-    for (var i = 0; i<255; i++){
-        arr[i]=i+1
-    }
-    return arr
-}
-
-console.log(arr1to255())
-// Get even 1000 - Write a function that would get the sum of all the even numbers from 1 to 1000.  You may use a modulus operator for this exercise.
-function geteven1to1000(){
-    var sum = 0;
-    var i = 1
-    while (i<1001){
-        if (i % 2 == 0){
-            sum = sum + i
-        }
-        i = i + 1
-    }
-    return sum
-}
-console.log(geteven1to1000())
-// Sum odd 5000 - Write a function that returns the sum of all the odd numbers from 1 to 5000. (e.g. 1+3+5+...+4997+4999).
-function sumOdd1to5000(){
-    var sum = 0;
-    for (var i=1; i<5001;i++){
-        if (i%2==1){
-            sum = sum + i
-        }
-    }
-    return sum
-}
-console.log(sumOdd1to5000())
-// Iterate an array - Write a function that returns the sum of all the values within an array. (e.g. [1,2,5] returns 8. [-5,2,5,12] returns 14).
-function sumArray(arr){
-    var sum = 0
-    for (var i = 0; i<arr.length; i++){
-        sum = sum + arr[i]
-    }
-    return sum
-}
-console.log(sumArray([1,2,3,10]))
-// Find max - Given an array with multiple values, write a function that returns the maximum number in the array. (e.g. for [-3,3,5,7] max is 7)
-function findMaxInArray(arr){
-    var max = arr[0]
-    for (var i=1; i<arr.length; i++){
-        if (arr[i]>max){
-            max = arr[i]
-        }
-    }    
-    return max
-}
-console.log(findMaxInArray([1,2,3,10]))
-
-// Find average - Given an array with multiple values, write a function that returns the average of the values in the array. (e.g. for [1,3,5,7,20] average is 7.2)
-function average(arr){
-    var sum = 0;
-    for (var i = 0; i<arr.length; i++){
-        sum = sum + arr[i]
-    }
-    var average = sum/arr.length
-    return average
-}
-console.log(average([1,2,3,10]))
-
-// Array odd - Write a function that would return an array of all the odd numbers between 1 to 50. (ex. [1,3,5, .... , 47,49]). Hint: Use 'push' method.
-function arrayOdd1to50(){
-    var arr = []
-    for (var i = 0; i<51; i++){
-        if (i%2==1){
-            arr.push(i)
+// Biggie Size - Given an array, write a function that changes all positive numbers in the array to the string "big".  Example: makeItBig([-1,3,5,-5]) returns that same array, changed to [-1, "big", "big", -5].
+function biggie(arr){
+    for (var i =0;i<arr.length;i++){
+        if (arr[i]>0){
+            arr[i]="big"
         }
     }
     return arr
 }
-console.log(arrayOdd1to50())
-
-// Greater than Y - Given value of Y, write a function that takes an array and returns the number of values that are greater than Y. For example if arr = [1, 3, 5, 7] and Y = 3, your function will return 2. (There are two values in the array greater than 3, which are 5, 7).
-function arrGreaterThanY(arr, Y){
-    var numValuesGreater = 0
-    for (var i = 0; i<arr.length; i++){
-        if (arr[i]>Y){
-            numValuesGreater++
-        }
-    }
-    return numValuesGreater
-}
-console.log(arrGreaterThanY([1,2,3,10], 6))
-
-// Squares - Given an array with multiple values, write a function that replaces each value in the array with the value squared by itself. (e.g. [1,5,10,-2] will become [1,25,100,4])
-function arrSquared(arr){
-    for (var i=0; i<arr.length; i++){
-        arr[i] = arr[i]*arr[i]
-    }
-    return arr
-}
-console.log(arrSquared([1,2,3, 10]))
-
-// Negatives - Given an array with multiple values, write a function that replaces any negative numbers within the array with the value of 0. When the program is done the array should contain no negative values. (e.g. [1,5,10,-2] will become [1,5,10,0])
-function replaceNegativeNumbers(arr){
-    for (var i=0; i<arr.length; i++){
-        if (arr[i]<0){
-            arr[i]=0
-        }
-    }
-    return arr
-}
-console.log(replaceNegativeNumbers([-1,2,-3,10]))
-
-// Max/Min/Avg - Given an array with multiple values, write a function that returns a new array that only contains the maximum, minimum, and average values of the original array. (e.g. [1,5,10,-2] will return [10,-2,3.5])
-function maxMinAvg(arr){
-    var max = arr[0]
-    var min = arr[0]
-    var sum = arr[0]
+console.log(biggie(arr_big))
+// Print Low, Return High - Create a function that takes in an array of numbers.  The function should print the lowest value in the array, and return the highest value in the array.
+function printLowReturnHigh(arr){
+    var max=arr[0]
+    var min=arr[0]
     for (var i=1; i<arr.length; i++){
         if (arr[i]<min){
             min=arr[i]}
         if (arr[i]>max){
-            min=arr[i]}
-        sum = sum + arr[i]
-        }
-    avg = sum/arr.length
-    return [max, min, avg]
-    }
-
-console.log(maxMinAvg([1,2,3,10]))
-
-// Swap Values - Write a function that will swap the first and last values of any given array. The default minimum length of the array is 2. (e.g. [1,5,10,-2] will become [-2,5,10,1]).
-function swapFirstLast(arr){
-    var temp = arr[0]
-    arr[0] = arr[(arr.length-1)]
-    arr[(arr.length-1)] = temp
-    return arr
-}
-console.log(swapFirstLast([1,2,3,10]))
-
-// Number to String - Write a function that takes an array of numbers and replaces any negative values within the array with the string 'Dojo'. For example if array = [-1,-3,2], your function will return ['Dojo','Dojo',2].
-function replaceNegativeWithDojo(arr){
-    for(var i=0;i<arr.length;i++){
-        if (arr[i]<0){
-            arr[i]='Dojo'
+            max=arr[i]
         }
     }
+    console.log(min)
+    return max
+}
+console.log(printLowReturnHigh(arr))
+
+// Print One, Return Another - Build a function that takes in an array of numbers.  The function should print the second-to-last value in the array, and return the first odd value in the array.
+function return2ndtolast(arr){
+    console.log(arr[arr.length-2])
+    var firstOdd = null
+    var i = 0
+    while (firstOdd == null){
+        if (arr[i] % 2==1){
+            firstOdd=arr[i]
+        }
+        i++
+    }
+    return firstOdd
+}
+console.log(return2ndtolast(arr))
+// Double Vision - Given an array (similar to saying 'takes in an array'), create a function that returns a new array where each value in the original array has been doubled.  Calling double([1,2,3]) should return [2,4,6] without changing the original array.
+function double(arr_input){
+    for (var i=0; i<arr_input.length; i++){
+        arr_input[i] = arr_input[i] * 2
+    }
+    return arr_input
+}
+
+function double(arr_input){
+    newArr = [...arr_input]
+    for (var i=0; i<newArr.length; i++){
+        newArr[i] = newArr[i] * 2
+    }
+    return newArr
+}
+console.log("original array:")
+console.log(arr)
+console.log(double(arr))
+console.log(arr)
+// Count Positives - Given an array of numbers, create a function to replace the last value with the number of positive values found in the array.  Example, countPositives([-1,1,1,1]) changes the original array to [-1,1,1,3] and returns it.
+function countPositives(arr){
+    var pos = 0
+    for (var i=0;i<arr.length;i++){
+        if(arr[i]%2==0){
+            pos++
+        }
+    }
+    arr[arr.length-1]=pos
     return arr
 }
-console.log(replaceNegativeWithDojo([-1,2,-3,10]))
+console.log(countPositives(arr))
+// Evens and Odds - Create a function that accepts an array.  Every time that array has three odd values in a row, print "That's odd!".  Every time the array has three evens in a row, print "Even more so!".
+function evenOdds(arr){
+    var counterOdd = 0
+    var counterEven = 0
+    for (var i=0;i<arr.length;i++){
+        if (arr[i]%2==0){
+            counterEven++
+            counterOdd =0
+        }
+        else if (arr[i]%2==1){
+            counterOdd++
+            counterEven=0}
+        if (counterOdd==3){
+            console.log("That's odd!")
+            counterOdd=0
+        }
+        if (counterEven==3){
+            console.log("Even more so!")
+            counterEven=0
+        }
+    }
+}
+
+evenOdds([1,1,1,2,2,2,2,4,4,2,1])
+// Increment the Seconds - Given an array of numbers arr, add 1 to every other element, specifically those whose index is odd (arr[1], arr[3], arr[5], etc).  Afterward, console.log each array value and return arr.
+function incSeconds(arr){
+    for (var i=0;i<arr.length;i++){
+        if (i%2==1){
+            arr[i] = arr[i] + 1
+        }
+        console.log(arr[i])
+    }
+    return arr
+}
+var arr = [1,2,3,10]
+
+console.log(incSeconds(arr))
+// Previous Lengths - You are passed an array (similar to saying 'takes in an array' or 'given an array') containing strings.  Working within that same array, replace each string with a number - the length of the string at the previous array index - and return the array.  For example, previousLengths(["hello", "dojo", "awesome"]) should return ["hello", 5, 4]. Hint: Can for loops only go forward?
+function prevLen(arr){
+    for (var i=arr.length-1;i>0;i--){
+        arr[i] = arr[i-1].length
+    }
+    return arr
+}
+console.log(prevLen(['24','234','324']))
+// Add Seven - Build a function that accepts an array. Return a new array with all the values of the original, but add 7 to each. Do not alter the original array.  Example, addSeven([1,2,3]) should return [8,9,10] in a new array.
+function addSeven(arr){
+    var newArr = [...arr]
+    for (var i=0;i<newArr.length;i++){
+        newArr[i] = newArr[i] + 7
+    }
+    return newArr
+}
+var arr = [1,2,3,10]
+
+console.log(arr)
+console.log(addSeven(arr))
+console.log(arr)
+// Reverse Array - Given an array, write a function that reverses its values, in-place.  Example: reverse([3,1,6,4,2]) returns the same array, but now contains values reversed like so... [2,4,6,1,3].  Do this without creating an empty temporary array.  (Hint: you'll need to swap values).
+function reverseArray(arr){
+    for(var i=0; i<Math.round(arr.length/2)-1;i++){
+        var temp = arr[i]
+        arr[i]=arr[arr.length-i-1]
+        arr[arr.length-i-1] = temp
+    }
+    return arr
+}
+console.log("reverseArray:")
+console.log(reverseArray(arr))
+// Outlook: Negative - Given an array, create and return a new one containing all the values of the original array, but make them all negative (not simply multiplied by -1). Given [1,-3,5], return [-1,-3,-5].
+function returnNegative(arr){
+    var newArr = [...arr]
+    for(var i=0;i<newArr.length;i++){
+        if (newArr[i]<0){
+            newArr[i]=newArr[i]*-1
+        }
+    }
+    return newArr
+}
+var arr = [-1,2,3,10]
+console.log(returnNegative(arr))
+// Always Hungry - Create a function that accepts an array, and prints "yummy" each time one of the values is equal to "food".  If no array values are "food", then print "I'm hungry" once.
+function alwaysHungry(arr){
+    var foodBool = false
+    for (var i=0;i<arr.length;i++){
+        if (arr[i]=='food'){
+            console.log("yummy")
+            foodBool=true
+        }
+    }
+    if (foodBool==false){
+        console.log("I'm hungry")
+        }
+}
+console.log("always_hungry:")
+alwaysHungry(['food', 'adsf','adf'])
+alwaysHungry(['adsf','adf'])
+// Swap Toward the Center - Given an array, swap the first and last values, third and third-to-last values, etc.  Example: swapTowardCenter([true,42,"Ada",2,"pizza"]) turns the array into ["pizza", 42, "Ada", 2, true].  swapTowardCenter([1,2,3,4,5,6]) turns the array into [6,2,4,3,5,1].  No need to return the array this time.
+function swapTowardsCenter(arr){
+    for(var i=0; i<Math.round(arr.length/2)-1;i=1+2){
+        var temp = arr[i]
+        arr[i]=arr[arr.length-i-1]
+        arr[arr.length-i-1] = temp
+    }
+    return arr
+}
+var arr = [1,2,3,10]
+console.log("swap towards center:")
+console.log(swapTowardsCenter(arr)) 
+// Scale the Array - Given an array arr and a number num, multiply all values in the array arr by the number num, and return the changed array arr.  For example, scaleArray([1,2,3], 3) should return [3,6,9].
+function scaleArr(arr, num){
+    for (var i=0;i<arr.length;i++){
+        arr[i] = arr[i]*num
+    }
+    return arr
+}
+var arr = [1,2,3,10]
+
+console.log(scaleArr(arr,3))
