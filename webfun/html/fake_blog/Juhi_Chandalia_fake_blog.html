@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Fake Blog!</title>
+        <meta name="description" content="This is Fake Blog! Not to be confused with Fake News!" >
+    </head>
+    <body>
+        <div style="background-color:lightblue">
+            <h1>My FAKE Blog!!</h1> 
+        </div>
+        <p>Here, you can do fun things like validate your html:</p>
+        <a href="https://www.w3schools.com">Visit W3Schools.com!</a>
+        <h3>Omg, look, a picture!</h3>
+        <img src="http://lorempixel.com/100/100/" alt="A pictures">
+        <p>Things I like:</p>
+        <ul>
+            <li>hiking</li>
+            <li>natural makeup</li>
+            <li>art</li>
+            <li>math</li>
+        </ul>
+        <p>Some Equations I Like (rating given for cleverness):</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equation</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Schrodinger's</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Bernoulli's</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                        <td>Pythagorean</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+        </table>
+        <h2>Fake Survey!</h2>
+        <p>I would love to know more about people reading my Fake Blog!</p>
+        <form action="process.php" method="post">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name">
+            <br>
+            <p>Select your gender:</p>
+            <label for="male">Male</label>
+            <input type="radio" id="male" name="gender" value="male">
+        
+            <label for="female">Female</label>
+            <input type="radio" id="female" name="gender" value="female">
+            
+            <label for="other">Other</label>
+            <input type="radio" id="other" name="gender" value="other">
+            <br>
+            <p>Select your favorite language:</p>
+            <select name="favorite_language">
+                <option value="javascript">javascript</option>
+                <option value="python">python</option>
+                <option value="R">R</option>
+            </select>
+            <br>
+            <p>Select your favorite colors:</p>
+            <label for="red">Red</label>
+            <input type="checkbox" id="red" name="color" value="red">
+        
+            <label for="green">Green</label>
+            <input type="checkbox" id="green" name="color" value="green">
+            
+            <label for="pink">Other</label>
+            <input type="checkbox" id="pink" name="color" value="pink">
+            <br>
+            <p>Thank you for answering my survey!</p>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+    
+</html>
