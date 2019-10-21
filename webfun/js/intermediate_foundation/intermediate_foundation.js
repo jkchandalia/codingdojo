@@ -85,3 +85,10 @@ function doubleTrouble(arr){
     return newarr
 }
 console.log(doubleTrouble([1,2,3,10]))
+
+function getFibonacciR(num){
+    if (num==0||num==1){
+        return num}
+    return getFibonacciR(num-1) + getFibonacciR(num-2)
+}
+console.log(getFibonacci(5))
