@@ -1,0 +1,133 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+   }
+div#wrapper {
+    width: 1000px;
+    font-family:'Courier New', Courier, monospace;
+    min-height: 400px;
+}
+div#wrapper div#upper{
+    display:block;
+    width: 1000px;
+    min-height: 400px;
+    background-color:#1E3F5C;
+}
+
+#top-nav{
+    display:block;
+    width: 900px;
+    min-height: 50px;
+    background-color: steelblue;
+    text-align: center;
+    margin-left: 50px;
+    border-radius: 10px;
+    padding-top:15px;
+}
+
+div#wrapper div#middle{
+    display:block;
+    width: 1000px;
+    min-height: 200px;
+    background-color: white;
+}
+div#wrapper div#lower{
+    display:inline-block;
+    width: 1000px;
+    min-height: 100px;
+    background-color:#1E3F5C;
+}
+h2{
+    display: inline;
+    color: white;
+    margin-left:30px;
+}
+#left-nav{
+    text-align: center;
+    color:white;
+    display: inline-block;
+    padding:15px;
+    width:250px;
+}
+
+#left-nav ul{
+    color:white;
+    margin-left: 30px ;
+    text-align: center;
+    list-style-position: inside;
+}
+#intro{
+    text-align: center;
+    color:white;
+    display: inline-block;
+    vertical-align: top;
+    padding:15px;
+    margin-left: 80px;
+    width: 600px;
+}
+.poem h3{
+    color: yellow;
+    font-style: italic;
+    font-weight: 80;
+}
+
+.dive-in{
+    display: inline-block;
+    min-width:460px;
+    margin: 10px;
+    text-align: center;
+    border-top: 5px solid blue ;
+    padding-top: 10px;
+    vertical-align: top;
+}
+#lower{
+    color: lightblue;
+    text-align: center;
+}
+#footer{
+    text-align: center;
+}
+#footer p{
+    display: inline-block;
+    margin-right:80px;
+    margin-left:80px;
+    font-size: 16pt;
+    padding:15px;
+}
+
+.dive-in ul {
+    vertical-align: center;
+    color: lightblue;
+    display: block;
+    margin-left: 150px;
+    width:150px;
+  }
+  
+#search{
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 50px;
+    text-align: right;
+    padding-left:100px;
+}
+#search p{
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+}
+input{
+    display: block;
+    border: 20px solid gray;
+    font-size: 16pt;
+}
+.yellow{
+    color:yellow;
+}
+.white{
+    color:white;
+}
+.black{
+    color:black;
+}

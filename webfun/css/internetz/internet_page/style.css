@@ -1,0 +1,184 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    
+   }
+div#wrapper {
+    width: 1000px;
+    min-height: 400px;
+}
+
+#upper h1, #left-nav, #main-content{
+    display: inline-block;
+}
+button, #upper h2, #left-nav h3{
+    color:white;
+}
+
+img{
+    width: 10%;
+    display: inline-block;
+}
+
+.warning-text{
+    color:red;
+}
+.info-text{
+    color:lightseagreen;
+}
+
+.emphasis-text{
+    color:steelblue;
+}
+div#wrapper div#upper{
+    display:block;
+    width: 1000px;
+    min-height: 100px;
+}
+
+#upper h1{
+    color: gray;
+    vertical-align: center;
+}
+
+#upper h2{
+    display: block;
+    background-color: steelblue;
+    height:50px;
+    padding:20px;
+}
+
+#left-nav{
+    width: 250px;
+    min-height: 200px;
+    vertical-align: top;
+}
+#left-nav h5{
+    display: inline;
+    color:black;
+    vertical-align: top;}
+
+#left-nav h3{
+    text-align: center;
+}
+#left-nav .video-button{
+    margin-left:30px;
+    background-color: steelblue;
+    width:120px;
+
+}
+
+#left-nav .resources-button{
+    margin-left:20px;
+    background-color:orange;
+    margin-bottom:20px;
+    width:120px;
+}
+
+#left-nav #reinvent{
+    background-image: url("ad_background.png");
+    border-top:2px solid gray;
+    padding-top:20px;
+}
+#left-nav, #reinvent{
+    width:150px;
+}
+
+#left-nav #reinvent #ninja{
+    display: block;
+    margin-left:50px;
+    width:30%;
+}
+#left-nav #reinvent .learn-button{
+    margin-left:20px;
+    background-color: lightseagreen;
+    width:120px;
+    margin-bottom: 10px;
+}
+
+#main-content{
+    vertical-align: top;
+    width: 800px;
+    min-height:600px;
+    margin-left:40px;
+}
+
+#main-content #top-bar h5, #main-content #top-bar #phone-info,
+#main-content #big3 img, #main-content #big3 #big3-text {
+    display:inline-block;
+}
+
+#main-content .server, #main-content .blurb{
+    display:block;
+}
+
+#main-content #top-bar{
+    padding-bottom:50px;
+    height:30px;
+}
+#main-content #top-bar #home{
+    width:4%;
+    vertical-align: top;
+    margin-left:40px;
+}
+
+#main-content #top-bar h5{
+    color:steelblue;
+    vertical-align: top;}
+
+#main-content #top-bar #phone{
+    margin-left: 430px;
+}
+#main-content #top-bar #phone-info{
+    vertical-align: top;
+}
+
+#main-content #top-bar #phone-info #phone-number{
+    color:cyan;
+}
+
+#main-content h4{
+    color:steelblue;
+    padding-bottom:15px;
+}
+#main-content .blurb{
+    min-height:100px;
+    margin-left: 40px;
+}
+
+#main-content #clients{
+    border-top: solid 3px gray;
+    margin-top:5px;
+}
+
+#main-content li{
+    padding-left:20px;
+    list-style-position: inside;
+}
+#main-content .server{
+    text-align: center;
+    margin-left:250px;
+    width:25%;
+    padding-bottom: 10px;;
+}
+
+#main-content #big3 img{
+    vertical-align: top;
+}
+#main-content #big3{
+    padding:10px;
+    margin:40px;
+    border-top:5px solid blue;
+    border-right:5px solid blue;
+    border-left:5px solid blue;
+
+}
+#main-content #big3 #big3-text {
+    width:300px;
+    vertical-align: top;
+    margin-left:40px;
+}
+
+

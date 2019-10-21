@@ -1,0 +1,125 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+   }
+div#wrapper {
+    width: 1000px;
+    background-color:white;
+    font-family:'Courier New', Courier, monospace;
+    min-height: 400px;
+}
+div#wrapper div#header h1 {
+    display:inline-block;
+    width: 500px;
+    margin-left:10px;
+}
+
+div#wrapper div#header h3 {
+    display:inline-block;
+    width: 480px;
+    text-align: right;
+    font-family: sans-serif;
+}
+#main-content {
+    background-color: rgb(61, 42, 75);
+    width: 1000px;
+    min-height: 400px;
+    display:block;
+    padding:20px;
+}
+
+div#about {
+    display: inline-block;
+    padding: 20px;
+    width: 958px;
+}
+
+img#me {
+    max-width: 460px;
+    height: auto;
+    outline: 7px solid gray;
+    outline-offset: -7px;
+}
+#blurb {
+    display:inline-block;
+    width: 460px;
+    vertical-align: top;
+    margin-left: 28px;
+    height: 304px;
+    background-color:rgb(241, 232, 247);
+    padding:0px;
+}
+.projects {
+    display: inline-block;
+    width: 300px;
+    vertical-align: top;
+    background-color: rgb(241, 232, 247);
+    height:350px;
+    margin-right:0px;
+    margin-left:20px;
+}
+.project_img{
+    height: auto;
+    max-width: 300px;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+
+}
+
+#contact-direct p{
+    display: inline-block;
+    text-align:center;
+}
+#contact-direct{
+    display: block;
+    text-align:center;
+}
+
+div#public-profiles {
+    display:block;
+    text-align:center;
+    padding: 20px;  
+}
+
+div#public-profiles p{
+    display:inline-block;
+    vertical-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: green;
+    display:block;
+    text-align:center;
+    margin: 0 auto;
+    color:white;
+    border-radius: 5px;
+}
+
+.gray_bar_medium{
+    color: white;
+    background-color: gray;
+    font-family: 'Courier New', Courier, monospace;
+    vertical-align: center;
+    height:35px;
+    font-size: 16pt;
+    margin:0px;
+}
+
+.gray_bar_small{
+    color: white;
+    background-color: gray;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14pt;
+    height:30px;
+    margin:0px 0px 10px 0px;
+}
+
+img {
+    max-width: 30px;
+    height: auto;}
+
+.tech_img {
+    margin-left: 4px;
+}
