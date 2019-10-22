@@ -6,15 +6,15 @@
    }
 #wrapper {
     width: 730px;
-    height: 600px;
-    background-color: #062134;
+    min-height: 600px;
+    background-color: rgb(233, 196, 201);
     padding-bottom:5px;
     padding-right:10px;
     padding-left:10px;
     padding-top:15px;
 }
 
-img{
+img#rose, img#rose2{
     height:auto;
     width:20%;
     margin-left:20px;
@@ -23,9 +23,25 @@ img{
 
 button {
     display:block;
-    margin:20px;
+    margin:50px;
     font-size:16pt;
     color:red;
     background-color:gray;
     padding:10px;
+}
+
+.garden {
+    height:auto;
+    width:12%;
+    margin-left:0px;
+    margin-top:0px;
+    display:inline-block;
+}
+
+#first-roses{
+    display:inline-block;
+}
+
+#garden-area{
+    display:inline-block;
 }

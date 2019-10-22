@@ -7,31 +7,77 @@
     <title>Disappearing Roses</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script>
+        $(document).ready(function(){
+            $("img.rose2").hide()
+            $("button.toggle").text("Make another")
+            $("h1").hide()
+            $("img.garden").hide()
+        })
+    </script>
 </head>
 <body>
     <div id="wrapper">
-        <img src="rose.jpg" alt="rose">
-        <button>Restore</button>
+        <div id="first-roses">
+            <h3 class="display-5">Rose: Pick me by clicking on me</h3>
+            <img class="rose" src="rose.jpg" alt="rose">
+            <button class="grow btn-danger">Grow A Rose</button>
+            <button class="appear btn-primary">Appear through Mist</button>
+            <div class="name">Give me a name: <input type="text"></div>
+            <h1>My name is: </h1>
+            <button class="toggle btn-warning" alt-text="Get rid of the other"></button>
+            <button class="grow-garden btn-info">Grow a garden</button>
+            <img class="rose2" src="rose.jpg" alt="rose">
+        </div>
+        <div id="garden-area">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">
+            <img class="garden" src="rose.jpg" alt="rose">        
+        </div>
     </div>
     <script>
-    $("img").click(function(){$(this).hide()})
-    $("button").click(function(){$("img").show()})
+    $("img.rose").click(function(){$(this).hide()})
+    $("button.grow").click(function(){$("img.rose").slideDown()})
+    $("button.appear").click(function(){$("img.rose").fadeIn(3000)})
+    $("button.grow-garden").click(function(){$("img.garden").fadeIn(3000)})
+
+    $("button.toggle").click(function(){
+        $("img.rose2").slideToggle();
+        var temp_txt = $("button.toggle").text();
+        $("button.toggle").text($(this).attr("alt-text"));
+        $("button.toggle").attr("alt-text", temp_txt)
+        })
+    $( "input" ).keydown(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        var value = $( this ).val();
+        $( "h1" ).append( value );
+        $("h1").show();
+        $("div.name").hide();
+        }
+        });
     </script>
 </body>
 </html>
 
-<!-- 
-.toggle
+<!-- .click
+
 .slideDown
-.slideUp
+
 .slideToggle
 .fadeIn
-.fadeOut
-.addClass
-.before
-.after
-.append
-.html
-.attr
+
 .val
 .text -->
