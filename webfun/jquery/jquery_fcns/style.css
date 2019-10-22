@@ -1,0 +1,31 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+   }
+#wrapper {
+    width: 730px;
+    height: 600px;
+    background-color: #062134;
+    padding-bottom:5px;
+    padding-right:10px;
+    padding-left:10px;
+    padding-top:15px;
+}
+
+img{
+    height:auto;
+    width:20%;
+    margin-left:20px;
+    margin-top:10px;
+}
+
+button {
+    display:block;
+    margin:20px;
+    font-size:16pt;
+    color:red;
+    background-color:gray;
+    padding:10px;
+}
