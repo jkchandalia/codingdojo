@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Disappearing Roses</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <img src="cat0.png" data-alt-src="ninja0.png">
+        <img src="cat1.png" data-alt-src="ninja1.png">
+        <img src="cat2.png" data-alt-src="ninja2.png">
+        <img src="cat3.png" data-alt-src="ninja3.png">
+        <img src="cat4.png" data-alt-src="ninja4.png">
+    </div>
+    <script>
+    $("img").click(function(){
+        var temp_src = $(this).attr("src");
+        $(this).attr("src",$(this).attr("data-alt-src"));
+        $(this).attr("data-alt-src",temp_src);
+        })
+
+    </script>
+</body>
+</html>
