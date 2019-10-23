@@ -4,20 +4,15 @@
     padding: 0px;
     font-family: sans-serif;
    }
-#wrapper {
-    width: 730px;
-    min-height: 600px;
+.container {
     background-color: rgb(233, 196, 201);
-    padding-bottom:5px;
-    padding-right:10px;
-    padding-left:10px;
-    padding-top:15px;
+    padding: 10px;
 }
 
-img#rose, img#rose2{
+img.rose, img.rose2{
     height:auto;
-    width:20%;
-    margin-left:20px;
+    width:50%;
+    margin-left:80px;
     margin-top:10px;
 }
 
@@ -25,9 +20,10 @@ button {
     display:block;
     margin:50px;
     font-size:16pt;
-    color:red;
     background-color:gray;
     padding:10px;
+    width:350px;
+    border-radius:20px;
 }
 
 .garden {
