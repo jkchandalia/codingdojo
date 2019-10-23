@@ -1,0 +1,31 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+   }
+.btn_secondary{
+    padding-left:10px;
+    background-color: blue;
+}
+#container {
+    width: 500px;
+    min-height: 400px;
+    background-image: url("sky.jpg");
+    background-color: rgb(233, 196, 201);
+    padding-bottom:5px;
+    padding-right:10px;
+    padding-left:10px;
+    padding-top:15px;
+    display: inline-block;
+}
+
+#info{
+    min-width:200px;
+    min-height:400px;
+    display:inline-block;
+    outline:solid 10px red;
+    vertical-align: top;
+    color:black;
+}
+

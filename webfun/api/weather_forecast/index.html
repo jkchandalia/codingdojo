@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script>
+        $(document).ready(function() {
+            $('form').submit(function() {
+                var input_val = $("input#location").val()
+                console.log(input_val);
+                $("h4#output").text("Location: "+input_val);
+                // console.log(input_val);
+                var url = "http://api.openweathermap.org/data/2.5/weather?q="+input_val+"&&appid=b3e0881f044f0323cba7cb05d22a408c"
+                // (295K − 273.15) × 9/5 + 32 = 71.33°F
+                $.get(url, function(res) {
+                   console.log(res) 
+                   if (res["cod"]==200){
+                   var tempK=res["main"]["temp"]
+                   $("h4#temp").text("Temperature: "+tempK);
+                   }
+                   else {
+                    $("h4#temp").text("Temperature: Not Found");
+                    $("h4#output").text("Location: Please enter a valid location");
+                
+                   }
+
+                })
+            // your code here
+            // }, 'json');
+            // don't forget to return false so the page doesn't refresh
+            return false;
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div id="container">
+        <h1 class="display-4">Weather Forecast</h1>
+        <h4>Get Current Temperature:</h4>
+        <form id="target">
+            <p class="display-5">Enter a location:</p><input id="location" type="text">
+            <input class="btn-secondary" type="submit" value="Submit">
+        </form>
+        <div id="output">
+            <h4 id="output">Location: </h4>
+            <h4 id="temp">Temperature (K): </h4>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<!-- {"coord":{"lon":-92.57,"lat":38.63},"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],"base":"stations","main":{"temp":295.05,"pressure":1012,"humidity":30,"temp_min":294.26,"temp_max":295.93},"visibility":16093,"wind":{"speed":7.7,"deg":200,"gust":12.9},"clouds":{"all":1},"dt":1571862976,"sys":{"type":1,"id":3686,"country":"US","sunrise":1571833629,"sunset":1571872908},"timezone":-18000,"id":4379545,"name":"California","cod":200} -->
