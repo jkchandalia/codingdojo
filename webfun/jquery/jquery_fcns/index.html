@@ -11,22 +11,22 @@
     <script>
         $(document).ready(function(){
             $("img.rose2").hide()
-            $("button.toggle").text("Make another")
-            $("h1").hide()
+            $("button.toggle").text("Grow Another")
+            $("h3.name").hide()
             $("img.garden").hide()
         })
     </script>
 </head>
 <body>
-    <div id="wrapper">
+    <div class="container">
         <div id="first-roses">
-            <h3 class="display-5">Rose: Pick me by clicking on me</h3>
+            <h3 class="display-5">Click on me to pick me:</h3>
             <img class="rose" src="rose.jpg" alt="rose">
             <button class="grow btn-danger">Grow A Rose</button>
             <button class="appear btn-primary">Appear through Mist</button>
-            <div class="name">Give me a name: <input type="text"></div>
-            <h1>My name is: </h1>
-            <button class="toggle btn-warning" alt-text="Get rid of the other"></button>
+            <div class="name btn-secondary">Give me a name: <input type="text"></div>
+            <h3 class="name display-5">My name is: </h3>
+            <button class="toggle btn-warning" alt-text="'rm -rf' the other"></button>
             <button class="grow-garden btn-info">Grow a garden</button>
             <img class="rose2" src="rose.jpg" alt="rose">
         </div>
@@ -50,7 +50,7 @@
     <script>
     $("img.rose").click(function(){$(this).hide()})
     $("button.grow").click(function(){$("img.rose").slideDown()})
-    $("button.appear").click(function(){$("img.rose").fadeIn(3000)})
+    $("button.appear").click(function(){$("img.rose").fadeIn(6000)})
     $("button.grow-garden").click(function(){$("img.garden").fadeIn(3000)})
 
     $("button.toggle").click(function(){
@@ -63,8 +63,8 @@
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){
         var value = $( this ).val();
-        $( "h1" ).append( value );
-        $("h1").show();
+        $( "h3.name" ).append( value );
+        $("h3.name").show();
         $("div.name").hide();
         }
         });
