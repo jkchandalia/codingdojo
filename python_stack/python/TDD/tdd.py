@@ -146,5 +146,36 @@ class factorialTests(unittest.TestCase):
         print("running tearDown tasks")
 
 
+
+def fibonacci(n):
+    if n==0 or n==1:
+        return n
+    else: 
+        return fibonacci(n-1) + fibonacci(n-2)
+# our "unit tests"
+# initialized by creating a class that inherits from unittest.TestCase
+class fibonacciTests(unittest.TestCase):
+    # each method in this class is a test to be run
+    def testBaseOne(self):
+        self.assertEqual(fibonacci(0), 0)
+
+    def testBaseTwo(self):
+        self.assertEqual(fibonacci(1), 1)
+
+    def testPositiveOne(self):
+        self.assertEqual(fibonacci(5), 5)
+
+    def testPositiveTwo(self):
+        self.assertEqual(fibonacci(7), 13)
+
+    def setUp(self):
+        # add the setUp tasks
+        print("running setUp")
+    # any task you want run after the tests are executed, put them in the tearDown method
+    def tearDown(self):
+        # add the tearDown tasks
+        print("running tearDown tasks")
+
+
 if __name__ == '__main__':
     unittest.main() # this runs our tests
