@@ -77,7 +77,7 @@ class SList:
             previous = runner
             runner = runner.next
             counter = counter + 1
-        if runner.next is None:
+        if runner is None:
             self.add_to_back(val)
         else:
             new_node = SLNode(val)
@@ -101,8 +101,17 @@ class SLNode:
 # Linked lists
 # are
 # fun!
+my_list = SList() 
+my_list.add_to_back(1).add_to_back(1).add_to_back(1).add_to_back(1).insert_at(3,0).print_values()
+print()
+my_list1 = SList() 
+my_list1.add_to_back(1).add_to_back(1).add_to_back(1).add_to_back(1).insert_at(3,1).print_values()
+print()
 my_list2 = SList() 
-my_list2.add_to_back(1).add_to_back(1).add_to_back(1).add_to_back(1).insert_at(3,0).print_values()
+my_list2.add_to_back(1).add_to_back(1).add_to_back(1).add_to_back(1).insert_at(3,2).print_values()
 print()
 my_list3 = SList() 
 my_list3.add_to_back(1).add_to_back(1).add_to_back(1).add_to_back(1).insert_at(3,3).print_values()
+print()
+my_list4 = SList() 
+my_list4.add_to_back(1).add_to_back(1).add_to_back(1).add_to_back(1).insert_at(3,4).print_values()
