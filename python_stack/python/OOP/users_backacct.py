@@ -9,15 +9,11 @@ class User:
         self.accounts = {"primary": BankAccount(int_rate=0.02, balance=0)}
 
     def make_deposit(self, amount, account="primary"):	# takes an argument that is the amount of the deposit
-    	self.accounts[account].balance += amount	# the specific user's account increases by the amount of the value received
-        return self
-
-    def make_deposit(self, amount, account="primary"):	# takes an argument that is the amount of the deposit
-    	self.accounts[account].balance += amount	# the specific user's account increases by the amount of the value received
+    	self.accounts[account].deposit(amount)	# the specific user's account increases by the amount of the value received
         return self
 
     def make_withdrawal(self, amount, account="primary"):
-        self.accounts[account].balance -= amount
+        self.accounts[account].withdrawal(amount)
         return self
 
     def display_user_balance(self, account="primary"):
