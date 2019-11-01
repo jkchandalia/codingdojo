@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <h3>My Beautiful Boxes</h3>
+    <p>Welcome!</p>
+
+    {% for in in range(0,num): %}
+        <div style="background-color:{% if color is defined %} {{color}} {%else:%}slateblue{%endif%}; height:160px; width:160px;margin:10px;display:inline-block;outline:5px solid black;"></div>
+    {% endfor %}
+</body>
+</html>
