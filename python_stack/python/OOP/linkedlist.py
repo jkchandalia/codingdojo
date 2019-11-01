@@ -4,8 +4,9 @@ class SList:
 
     def add_to_front(self, val):
         new_node = SLNode(val)
-        current_head = self.head
-        new_node.next = current_head
+        if self.head is not None:
+            current_head = self.head
+            new_node.next = current_head
         self.head = new_node  # SET the list's head TO the node we created in the last step
         return self
 
@@ -28,7 +29,16 @@ class SList:
         runner.next = new_node  # increment the runner to the next node in the list
         return self                 # return self to allow for chaining
 
+    def _check_empty(self):
+        if self.head is None:
+            print("List is empty.")
+            return True
+        return False
+
+    
     def remove_from_front(self):# - remove the first node and return its value
+        if self._check_empty():
+            return self
         if self.head.next is None:
             self.head = None
         else:
@@ -36,6 +46,8 @@ class SList:
         return self
 
     def remove_from_back(self):# - remove the last node and return its value
+        if self._check_empty():
+            return self
         runner = self.head
         if runner.next is None:
             self.head = None
@@ -47,6 +59,7 @@ class SList:
     def remove_val(self, val):# - remove the first node with the given value
         if self.head.value == val:
             self.remove_from_front()
+            return self
         previous = self.head
         runner = self.head.next
         while runner is not None:
@@ -58,6 +71,7 @@ class SList:
                 return self
             previous = runner
             runner = runner.next
+        print(f"{val} not found.")
         return self
 
 

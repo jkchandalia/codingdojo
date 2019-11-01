@@ -30,6 +30,9 @@ class Animal:
         self.type = None
         self.location = None
         
+    def __str__(self):
+        return f"I am a {self.type} named {self.name} who is {self.age} years old with a health score of {self.health} and happiness score of {self.happiness}."
+    
     def display_info(self):
         print(f"I am a {self.type} named {self.name} who is {self.age} years old with a health score of {self.health} and happiness score of {self.happiness}.")
         return self
@@ -88,3 +91,7 @@ zoo1 = Zoo("John's Zoo")
 zoo1.add_animal(tiger1).add_animal(gazelle1).add_animal(giraffe1).print_all_info()
 tiger1.kill(gazelle1)
 zoo1.print_all_info()
+print("Use str representation of object")
+print(tiger1)
+print(dir(tiger1))
+print(tiger1.__dict__)
