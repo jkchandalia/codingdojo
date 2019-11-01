@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    
+</body>
+</html>
+<div class="container">
+    <form action='/users' method='post'>
+    <div class="row">Your Name: <input type='text' name='name'>
+    </div>
+    <div class="row">Dojo Location: 
+    <select name="location">
+            <option value="oakland">Oakland</option>
+            <option value="sj">San Jose</option>
+            <option value="ny">New York</option>
+            <option value="ny">Boston</option>
+    </select>
+    </div>
+    <!-- <form action="/action_page.php"> -->
+    <div class="row">Favorite Language:
+    <select name="language">
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="javascript">Javascript</option>
+        <option value="r">R</option>
+        <option value="matlab">Matlab</option>
+    </select>
+    </div>
+    <div class="row">Gender:
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="other"> Other
+    </div>
+    <div class="row">Transportation Methods:
+        <input type="checkbox" name="commute" value="Bike"> Bike<br>
+        <input type="checkbox" name="commute" value="Bus"> Bus<br>
+        <input type="checkbox" name="commute" value="BART"> BART<br>
+        <input type="checkbox" name="commute" value="car"> Cart<br>
+    </div>
+        <div class="row">Comment (optional): <input type='textarea' name='comment'>
+    </div>
+
+    <input type='submit' value='Create User'>
+</form>
+</div>
