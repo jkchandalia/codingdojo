@@ -13,7 +13,7 @@ class Underscore:
         for item in enumerate(iterable):
             if callback(item):
                 output.append(item)
-        return output        
+        return output
     def reject(self, iterable, callback):
         output = []
         for item in enumerate(iterable):
