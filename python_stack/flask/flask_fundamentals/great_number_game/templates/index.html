@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <title>Dojo Survey</title>
+</head>
+<body>
+    
+<div class="container .text-center">
+    <h1 class="display-4">Welcome to the Great Number Game!</h1>
+    <h2 class="display-5">I am thinking of a number between 1 and 100</h2>
+    <h2 class="display-5">Take a guess!</h2>
+    <h2 class="display-5">You have made {{session['num_guesses']}} guesses so far.</h2>
+    <div class="text-center">
+    {%if session["guess"]=="too high"%}
+    <div id="too-low">Too high!</div>
+    {%elif session["guess"]=="too low"%}
+    <div id="too-high">Too low!</div>
+    {%elif session["guess"]=="equal"%}
+    <div id="equal" class="text-center">{{session["number"]}} was the number!
+        <form id="play-again" action='/play_again' method='post'>
+        <input id="play_again_box" name="play_again" type="text">
+        <input type='submit' value='Play Again'>
+        </form>
+            
+    </div>
+    <!-- <script>$("#guess-form").hide()</script> -->
+
+    {%endif%}
+    </div>
+
+    <form id="guess-form" action='/guess' method='post'>
+    <input name="guess" type="int">
+    <input type='submit' value='Submit'>
+    </form>
+    <!-- <script>$("#guess-form").hide()</script> -->
+
+    
+</div>
+</body>
+</html>

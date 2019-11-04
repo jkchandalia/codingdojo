@@ -1,0 +1,44 @@
+.container {
+    /* outline: 5px solid black; */
+    margin:50px;
+}
+.container{
+    /* width: 400px; */
+    padding:20px;
+}
+.container *{
+    display: block;
+    /* max-width: 500px; */
+    text-align: center;
+}
+
+#too-high, #too-low, #equal {
+    width:200px;
+    height:200px;
+    color:white;
+    padding:30px;
+    padding-top:80px;
+    margin-left:400px;
+    /* text-align: center; */
+}
+#guess-form{
+    margin-left:450px;
+}
+#too-high, #too-low {
+    background-color: red;;
+}
+
+#equal {
+    background-color: green;
+}
+
+#play_again_box{
+    width:100px;
+}
+.display-4{
+    text-align: center;
+}
+
+.display-5{
+    text-align: center;
+}
