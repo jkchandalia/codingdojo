@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <title>Ninja Gold</title>
+</head>
+<body>
+    
+<div class="container ">
+  <p>Your gold: {{session['gold']}}</p> 
+  <div class="option text-center"> Farm
+    <form action="/process_money" method="post">
+        <input type="hidden" name="building" value="farm" />
+        <input class="btn btn-secondary" type="submit" value="Find Gold!"/>
+      </form>
+    </div>
+    <div class="option"> Cave
+      <form action="/process_money" method="post">
+        <input type="hidden" name="building" value="cave" />
+        <input class="btn btn-secondary" type="submit" value="Find Gold!"/>
+      </form>
+    </div>
+    <div class="option"> House
+      <form action="/process_money" method="post">
+        <input type="hidden" name="building" value="house" />
+        <input type="submit" class="btn btn-secondary" value="Find Gold!"/>
+      </form>
+    </div>
+    <div class="option"> Casino
+      <form action="/process_money" method="post">
+        <input type="hidden" name="building" value="casino" />
+        <input type="submit" class="btn btn-secondary" value="Find Gold!"/>
+      </form>  
+    </div>
+    <div class="activities">Activities
+      {%for i in range((session['activities']|length)-1,-1,-1)%}
+      {{session['activities'][i]|safe}}
+      {%endfor%}
+
+    </div>
+    <a class="btn btn-secondary" href="/destroy_session">Reset</a>
+</div>
+</body>
+</html>

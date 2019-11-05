@@ -1,0 +1,65 @@
+.container {
+    /* outline: 5px solid black; */
+    margin:50px;
+}
+.container{
+    /* width: 400px; */
+    padding:20px;
+    margin:auto;
+}
+.container *{
+    display: block;
+    /* max-width: 500px; */
+    text-align: center;
+}
+
+.option{
+    outline: 5px solid black;
+    width:200px;
+    text-align: center;
+    height:200px;
+    display: inline-block;
+    margin:20px;
+    vertical-align: top;
+    padding:25px;
+}
+
+.activities{
+    outline:2px solid black;
+    width:90%;
+    height:200px;
+    display: block;
+    overflow: scroll;
+}
+
+.red{
+    color:red;
+    text-align: left;
+}
+
+.green {
+    color: green;
+    text-align: left;
+}
+
+input{
+    
+    text-align: center;
+    margin-left:80px;
+    display: inline-block;
+}
+.btn{
+    
+    text-align: center;
+    background-color:pink;
+    /* margin-left:80px; */
+    display: inline-block;
+}
+p{
+    text-align: left;
+    display: block;
+}
+
+a{
+    display: inline-block;
+}
