@@ -7,7 +7,15 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'time_app/css/style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Time Display</title>
+    <script>
+        $( document ).ready(function(){
+            var trialdate = new Date().toLocaleString();
+            $('#datetime').append('<h6>Date in javascript below:</h6>')
+            $('#datetime').append(trialdate)
+        })
+    </script>
 </head>
 <body>
     <div class="container-fluid text-center">
