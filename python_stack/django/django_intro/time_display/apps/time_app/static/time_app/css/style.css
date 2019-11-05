@@ -1,0 +1,10 @@
+p, #datetime{
+    outline:2px black solid;
+    display:inline-block;
+    margin:50px;
+    padding:10px;
+}
+
+#label{
+    margin-top:100px;
+}
