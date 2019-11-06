@@ -4,18 +4,21 @@ import time
 
 # Create your views here.
 def index(request):
-    if "gold" not in request.session:
-        request.session["gold"] = 0
-        request.session['activities'] = []
-    return render(request,'gold_app/index.html')
+    if request.method == "GET":
+        if "gold" not in request.session:
+            request.session["gold"] = 0
+            request.session['activities'] = []
+        return render(request,'gold_app/index.html')
 
-def process_money(request):
+
+def process_money_diff(request):
+
     str_format=('%Y/%m/%d %H:%M %p')
     gold_lookup_dict = {"farm": random.randint(10,20),
                     "cave":  random.randint(5,10),
                     "house": random.randint(2,5),
                     "casino": 0-random.randint(0,50)}
-    key = request.POST["building"]
+    key = request.GET['building']
     gold_earned = gold_lookup_dict[key]
     request.session['gold']+=gold_earned
     if key in ("farm", "cave", "house"):
