@@ -29,7 +29,7 @@ author1.books.add(book2)
 author2 = Author.objects.get(id=2)
 book3 = Book.objects.get(id=3)
 author2.books.add(book1)
-author2.books.add(book2)
+author2.books.add(book2)    
 author2.books.add(book3)
 
 author3 = Author.objects.get(id=3)
