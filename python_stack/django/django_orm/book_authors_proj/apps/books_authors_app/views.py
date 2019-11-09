@@ -26,8 +26,13 @@ def authors(request):
 
 def author(request, author_id):
     if request.method=="GET":
+        author = Author.objects.get(id=author_id)
+        all_books = Book.objects.all()
+        current_books = author.books.all()
+        all_other_books = set(all_books).difference(set(current_books))
+
         context = {"author_info": Author.objects.get(id=author_id),
-                    "all_books": Book.objects.all()}
+                    "all_other_books": all_other_books}
         return render(request, "books_authors_app/author.html", context)
     if request.method=="POST":
         author = Author.objects.get(id=author_id)
@@ -36,8 +41,12 @@ def author(request, author_id):
 
 def book(request, book_id):
     if request.method=="GET":
+        book = Book.objects.get(id=book_id)
+        all_authors = Author.objects.all()
+        current_authors = book.authors.all()
+        all_other_authors = set(all_authors).difference(set(current_authors))
         context = {"book_info": Book.objects.get(id=book_id),
-                    "all_authors": Author.objects.all()}
+                    "all_other_authors": all_other_authors}
         return render(request, "books_authors_app/book.html", context)
     if request.method=="POST":
         book = Book.objects.get(id=book_id)
@@ -48,3 +57,9 @@ def delete_author(request, author_id):
     author = Author.objects.get(id=author_id)
     author.delete()
     return redirect("/authors")
+
+
+def delete_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    book.delete()
+    return redirect("/books")

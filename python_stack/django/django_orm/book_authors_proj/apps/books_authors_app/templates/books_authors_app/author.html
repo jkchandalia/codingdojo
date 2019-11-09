@@ -28,14 +28,14 @@
     <form method="POST">
         {%csrf_token%}
         <select name="book_id">
-            {%for book in all_books%}
+            {%for book in all_other_books%}
             <option value={{book.id}}>{{book.title}}</option>
             {%endfor%}
         </select>
         <input type="submit" value="Add">
     </form>
     <a class="btn btn-primary" href="/authors">Authors</a>
-        <a class="btn btn-primary" href="/books">Books</a
+    <a class="btn btn-primary" href="/books">Books</a
             >
         </div>
 </body>
