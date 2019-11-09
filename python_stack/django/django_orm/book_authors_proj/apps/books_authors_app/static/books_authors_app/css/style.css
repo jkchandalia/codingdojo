@@ -1,0 +1,35 @@
+td {
+    display:inline-block;
+}
+
+table {
+    max-width:600px;
+display:inline-block;}
+
+    #booktable td, #booktable th {
+        width: 340px;
+    }
+
+    
+    #authortable td, #authortable th {
+        width: 200px;
+    }
+    #t{
+        max-width: 500px;
+        display: inline-block;
+    }
+    #form *{
+display: block;
+margin-bottom:20px;
+    }
+    #form{
+        margin-bottom:  30px;
+        margin-right: 100px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #tbook{
+        max-width: 400px;
+        display: inline-block;
+    }
