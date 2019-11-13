@@ -1,5 +1,6 @@
 from django.db import models
 import re
+import datetime
 
 # Create your models here.
 
@@ -13,6 +14,9 @@ class ShowManager(models.Manager):
             errors["network"] = "Network should have at least 3 characters"
         if len(postData['release_date'])<6:
             errors["release_date"] = "Valid release date must be entered"
+        elif datetime.datetime.strptime(postData['release_date'], '%Y-%m-%d')>datetime.datetime.now():
+            #print(postData["release_date"])
+            errors["release_date"] = "Valid release data is not in the future"
         if len(postData['desc']) < 10 & len(postData['desc']) != 0:
             errors["desc"] = "Description should have at least 10 characters"
     

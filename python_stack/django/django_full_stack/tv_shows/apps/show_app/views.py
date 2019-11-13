@@ -27,6 +27,10 @@ def create(request):
             messages.error(request, value)
         # redirect the user back to the form to fix the errors
         return redirect('/shows/new')
+    num_results = Show.objects.filter(title = request.POST['title']).count()
+    if num_results>0:
+        messages.error(request, "A show with this title already exists.")
+        return redirect('/shows/new')
     else:
         title = request.POST['title']
         network = request.POST['network']
