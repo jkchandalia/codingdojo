@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wall</title>
+</head>
+<body>
+    <div class="container">
+        <div class="upper-nav">
+            <h1>CodingDojo Wall</h1>
+            <h3>Welcome</h3>
+            <a href="/logout">Logout</a>
+        </div>
+        <form id="msg-post" method="POST" action="/wall/post_message">
+            {%csrf_token%}
+            <textarea name='msg'></textarea>
+            <input type='submit' value="Post a message">
+
+            
+        </form>
+
+        {% for msg in all_msgs reversed %}    
+        <p>{{msg.message}}</p>
+
+        <form id="comment-post" method="POST" action="/wall/post_comment">
+            {%csrf_token%}
+            <input type="hidden" name="post_id" value="{{msg.id}}">
+
+            <textarea name='comment'></textarea>
+            <input type='submit' value="Post a comment">        </form>
+        {% for comment in msg.comment.all %}    
+
+    <p>{{comment.comment}}</p>
+        {% endfor %}
+        {% endfor %}
+
+    </div>
+</body>
+</html>
