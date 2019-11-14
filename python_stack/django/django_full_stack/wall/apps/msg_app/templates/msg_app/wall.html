@@ -10,7 +10,7 @@
     <div class="container">
         <div class="upper-nav">
             <h1>CodingDojo Wall</h1>
-            <h3>Welcome {{request.session.userid}}</h3>
+            <h3>Welcome {{request.session.first_name}}</h3>
             <a href="/logout">Logout</a>
         </div>
         <form id="msg-post" method="POST" action="/wall/post_message">

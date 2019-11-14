@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from apps.login_app.models import *
 from apps.msg_app.models import *
 import datetime
@@ -12,7 +13,7 @@ def index(request):
         return render(request, "msg_app/wall.html",context)
     else:
         messages.error(request, "Please login or register")
-        redirect("/")
+        return redirect("/")
 
 def post_message(request):
     user = User.objects.get(id=request.session['userid'])
@@ -29,7 +30,6 @@ def post_comment(request):
 def delete(request):
     msg = Message.objects.get(id=request.POST['delete'])
     userid = msg.user.id
-    #print(datetime.datetime.now()-msg.created_at)
     if userid==request.session['userid']:
         msg.delete()
     return redirect("/wall")
