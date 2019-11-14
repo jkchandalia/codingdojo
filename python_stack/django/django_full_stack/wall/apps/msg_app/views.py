@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect
 from apps.login_app.models import *
 from apps.msg_app.models import *
+import datetime
 
 # Create your views here.
 def index(request):
-    context = {
-        'all_msgs': Message.objects.all()
-    }
-    return render(request, "msg_app/wall.html",context)
+    if 'logged_in' in request.session:
+        context = {
+            'all_msgs': Message.objects.all()
+        }
+        return render(request, "msg_app/wall.html",context)
+    else:
+        messages.error(request, "Please login or register")
+        redirect("/")
 
 def post_message(request):
     user = User.objects.get(id=request.session['userid'])
@@ -19,4 +24,12 @@ def post_comment(request):
     message=Message.objects.get(id=request.POST['post_id'])
     Comment.objects.create(user=user, message=message, comment=request.POST['comment'])
     print(Comment.objects.all().values())
+    return redirect("/wall")
+
+def delete(request):
+    msg = Message.objects.get(id=request.POST['delete'])
+    userid = msg.user.id
+    #print(datetime.datetime.now()-msg.created_at)
+    if userid==request.session['userid']:
+        msg.delete()
     return redirect("/wall")

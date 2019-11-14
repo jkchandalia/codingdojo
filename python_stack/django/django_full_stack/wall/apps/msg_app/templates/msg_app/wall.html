@@ -10,7 +10,7 @@
     <div class="container">
         <div class="upper-nav">
             <h1>CodingDojo Wall</h1>
-            <h3>Welcome</h3>
+            <h3>Welcome {{request.session.userid}}</h3>
             <a href="/logout">Logout</a>
         </div>
         <form id="msg-post" method="POST" action="/wall/post_message">
@@ -23,13 +23,18 @@
 
         {% for msg in all_msgs reversed %}    
         <p>{{msg.message}}</p>
-
+        <form method="POST" action="/wall/delete">
+            {%csrf_token%}
+            <input type="hidden" name="delete" value="{{msg.id}}">
+            <input type="submit" value="Delete">
+        </form>
         <form id="comment-post" method="POST" action="/wall/post_comment">
             {%csrf_token%}
             <input type="hidden" name="post_id" value="{{msg.id}}">
 
             <textarea name='comment'></textarea>
-            <input type='submit' value="Post a comment">        </form>
+            <input type='submit' value="Post a comment">        
+        </form>
         {% for comment in msg.comment.all %}    
 
     <p>{{comment.comment}}</p>
