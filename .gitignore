@@ -1,0 +1,7 @@
+**/__pycache__/**
+.vscode/
+**/venv/
+**/db.sqlite3
+hi
+**/amadon/**
+**/my_environments/**
