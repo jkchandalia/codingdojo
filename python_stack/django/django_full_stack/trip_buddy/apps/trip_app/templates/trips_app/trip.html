@@ -30,7 +30,7 @@
             <p>Created by: {{trip.created_by.first_name}}</p>
             
         </div>
-        <div id="People who've joined this trip:">
+        <h3>People who've joined this trip:</h3>
             {%for member in trip.members.all%}
                 {%if member.id != request.session.userid%}
                     <p>{{member.first_name}}</p>
