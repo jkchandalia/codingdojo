@@ -52,8 +52,42 @@ public class PuzzleJava {
         for (int i=0;i<10;i++){
         output_array.add(r.nextInt(45)+55);}
         return output_array;
-
-
+    }
+    public void returnRandSort(){
+        ArrayList<Integer> output_array = new ArrayList<Integer>();
+        Random r = new Random();
+        for (int i=0;i<10;i++){
+        output_array.add(r.nextInt(45)+55);}
+        Collections.sort(output_array);
+        System.out.println(output_array);
+        System.out.println("The min number is: " + output_array.get(0));
+        System.out.println("The max number is: " + output_array.get(9));
+    }
+    public String returnRandStr(){
+        ArrayList<Character> alpha_array = new ArrayList<Character>();
+        String output_str = "";
+        char c;
+        for(c = 'a'; c <= 'z'; ++c){
+            alpha_array.add(c);}
+        Random r = new Random();
+        for (int i=0;i<5;i++){
+        output_str += Character.toString(alpha_array.get(r.nextInt(26)));}
+        return output_str;
+    }
+    public ArrayList<String> returnRandStrArray(){
+        ArrayList<String> output_array = new ArrayList<String>();
+        PuzzleJava pJ = new PuzzleJava();
+        // ArrayList<Character> alpha_array = new ArrayList<Character>();
+        // String output_str = "";
+        // char c;
+        // for(c = 'a'; c <= 'z'; ++c){
+        //     alpha_array.add(c);}
+        // Random r = new Random();
+        // for (int i=0;i<5;i++){
+        // output_str += Character.toString(alpha_array.get(r.nextInt(26)));}
+        for (int i=0;i<10;i++){
+            output_array.add(pJ.returnRandStr());}
+        return output_array;
     }
     public static void main(String[] args){
         PuzzleJava pJ = new PuzzleJava();
@@ -67,5 +101,12 @@ public class PuzzleJava {
         pJ.alphabetShuffle();
         System.out.println("Next Test");
         System.out.println(pJ.returnRandArray());
+        System.out.println("Next Test");
+        pJ.returnRandSort();
+        System.out.println("Next Test");
+        System.out.println(pJ.returnRandStr());
+        System.out.println("Next Test");
+        System.out.println(pJ.returnRandStrArray());
+       
     }
 }
