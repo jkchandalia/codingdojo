@@ -6,9 +6,11 @@ public class GorillaTest {
 	gigi.throwSomething();
 	gigi.throwSomething();
 	gigi.throwSomething();
+	gigi.displayEnergy();
 	gigi.eatBananas();
 	gigi.eatBananas();
 	gigi.climb();
+	gigi.displayEnergy();
 
 }
 }
