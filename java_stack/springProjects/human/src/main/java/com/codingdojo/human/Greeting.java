@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello")
 public class Greeting {
     @RequestMapping("")
-    public String index(@RequestParam(value="q", required=false) String queryName) {
+    public String index(@RequestParam(value="first", required=false) String queryFirst,
+    		@RequestParam(value="last", required=false) String queryLast) {
         String name;
-        if (queryName==null){
+        if (queryFirst==null & queryLast==null){
         	name = "Human";
         }
         else {
-        	name=queryName;
+        	name=queryFirst + " " +queryLast;
         }
         return "Hello "+ name+"!\r\n\n Welcome to Spring Boot!";
     }
