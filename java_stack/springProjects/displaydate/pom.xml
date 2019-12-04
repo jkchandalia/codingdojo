@@ -8,10 +8,10 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.codingdojo.human</groupId>
-	<artifactId>human</artifactId>
+	<groupId>com.codingdojo.displaydate</groupId>
+	<artifactId>displaydate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>human</name>
+	<name>displaydate</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -34,6 +34,10 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
