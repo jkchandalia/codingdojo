@@ -31,22 +31,43 @@ public class BooksController {
     }
     @RequestMapping("/books/new")
     public String newBook(@ModelAttribute("book") Book book) {
-        return "books/new.jsp";
+        return "/books/new.jsp";
     }
     @RequestMapping(value="/books", method=RequestMethod.POST)
     public String create(@Valid @ModelAttribute("book") Book book, BindingResult result) {
         if (result.hasErrors()) {
-            return "books/new.jsp";
+            return "/books/new.jsp";
         } else {
             bookService.createBook(book);
             return "redirect:/books";
         }
     }
     @RequestMapping("/books/{book_id}")
-    public String show(@PathVariable("book_id") Long book_id, Model model) {
-    	Book book = bookService.findBook(book_id);
+    public String show(@PathVariable("book_id") String book_id, Model model) {
+    	Book book = bookService.findBook((long) Integer.parseInt(book_id));
     	model.addAttribute("book", book);
-    	return "books/show.jsp";
+    	return "/books/show.jsp";
+    }
+    @RequestMapping("/books/{id}/edit")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        Book book = bookService.findBook(id);
+        model.addAttribute("book", book);
+        return "/books/edit.jsp";
+    }
+    
+    @RequestMapping(value="/books/{id}", method=RequestMethod.POST)
+    public String update(@Valid @ModelAttribute("book") Book book, BindingResult result) {
+        if (result.hasErrors()) {
+            return "/books/edit.jsp";
+        } else {
+            bookService.updateBook(book);
+            return "redirect:/books";
+        }
+    }
+    @RequestMapping(value="/books/{id}", method=RequestMethod.DELETE)
+    public String destroy(@PathVariable("id") Long id) {
+        bookService.deleteBook(id);
+        return "redirect:/books";
     }
 }
 

@@ -1,5 +1,6 @@
 package com.codingdojo.mvc.controllers;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,13 @@ public class BooksApi {
     }
     @RequestMapping(value="/api/books/{id}", method=RequestMethod.PUT)
     public Book update(@PathVariable("id") Long id, @RequestParam(value="title") String title, @RequestParam(value="description") String desc, @RequestParam(value="language") String lang, @RequestParam(value="pages") Integer numOfPages) {
-        Book book = bookService.updateBook(id, title, desc, lang, numOfPages);
-        return book;
+		Book book = bookService.findBook(id);
+		book.setTitle(title);
+		book.setDescription(desc);
+		book.setLanguage(lang);
+		book.setNumberOfPages(numOfPages);
+    	Book updated_book = bookService.updateBook(book);
+        return updated_book;
     }
     
     @RequestMapping(value="/api/books/{id}", method=RequestMethod.DELETE)

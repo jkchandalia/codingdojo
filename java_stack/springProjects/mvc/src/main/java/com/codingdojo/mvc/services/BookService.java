@@ -35,13 +35,7 @@ public class BookService {
 		bookRepository.deleteById(id);
 		
 	}
-	public Book updateBook(Long id, String title, String desc, String lang, Integer numOfPages) {
-		Optional<Book> optionalBook = bookRepository.findById(id);
-		Book book = optionalBook.get();
-		book.setTitle(title);
-		book.setDescription(desc);
-		book.setLanguage(lang);
-		book.setNumberOfPages(numOfPages);
+	public Book updateBook(Book book) {	
 		bookRepository.save(book);
 		return null;
 	}
