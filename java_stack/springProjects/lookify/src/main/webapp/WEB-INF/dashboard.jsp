@@ -12,6 +12,11 @@
 <body>
 <a href="/songs/new">Add New</a>
 <a href="/search/topten">Top Songs</a>
+<form action="/searchbar" method="post">
+<input type="text" name="artist">
+<input type="submit" value="Search Artists">
+</form>
+
 <table>
     <thead>
         <tr>

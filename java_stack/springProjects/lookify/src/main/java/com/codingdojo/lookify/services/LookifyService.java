@@ -21,6 +21,14 @@ public class LookifyService {
     public List<Lookify> allLookifys() {
         return lookifyRepository.findAll();
     }
+    public List<Lookify> findTop10(){
+    	return lookifyRepository.findTop10ByOrderByRatingDesc();
+    }
+    
+    public List<Lookify> findByArtist(String artist){
+    	return lookifyRepository.findByArtistContaining(artist);
+    }
+    
     // creates a lookify
     public Lookify createLookify(Lookify b) {
         return lookifyRepository.save(b);

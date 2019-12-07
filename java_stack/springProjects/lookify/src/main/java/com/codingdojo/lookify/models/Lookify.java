@@ -17,6 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="lookify")
 public class Lookify {
+	
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

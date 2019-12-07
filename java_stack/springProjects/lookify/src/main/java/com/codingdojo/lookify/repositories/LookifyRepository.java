@@ -13,14 +13,7 @@ import com.codingdojo.lookify.models.Lookify;
 public interface LookifyRepository extends CrudRepository<Lookify, Long>{
 	// this method retrieves all the books from the database
     List<Lookify> findAll();
-    
-    @PersistenceContext
-    private EntityManager entityManager;
- 
-    @Override
-    public List<Lookify> findOrderedBySeatNumberLimitedTo(int limit) {
-        return entityManager.createQuery("SELECT l FROM Lookify l ORDER BY l.rating",
-          Lookify.class).setMaxResults(limit).getResultList();
-    }
+    List<Lookify> findTop10ByOrderByRatingDesc();
+    List<Lookify> findByArtistContaining(String artist);
 }
 
