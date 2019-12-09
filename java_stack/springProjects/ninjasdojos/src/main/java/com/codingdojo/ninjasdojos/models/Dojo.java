@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,6 +41,10 @@ public class Dojo {
         inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<Tag> tags;
+    
+    @Pattern(regexp="^(([a-z\\s])+$|([a-z\\s]+,)[a-z\\s]+){1,2}$", message="Tags must be lowercase, separated by commas, max 3")
+    transient String tagString;
+    
 	public Dojo(@Size(min = 3, max = 255) String name) {
 		super();
 		this.name = name;
@@ -85,5 +90,12 @@ public class Dojo {
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
+	public String getTagString() {
+		return tagString;
+	}
+	public void setTagString(String tagString) {
+		this.tagString = tagString;
+	}
+	
     
 }

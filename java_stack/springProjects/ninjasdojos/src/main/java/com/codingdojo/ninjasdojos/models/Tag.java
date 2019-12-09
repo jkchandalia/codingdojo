@@ -34,6 +34,8 @@ public class Tag {
 		super();
 		this.tag = tag;
 	}
+	public Tag() {
+	}
 	public Long getId() {
 		return id;
 	}

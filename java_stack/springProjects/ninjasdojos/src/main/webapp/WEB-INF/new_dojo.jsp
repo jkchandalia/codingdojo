@@ -17,11 +17,11 @@
 	<form:errors path="name" />
 	<form:input path="name" />
 	</p>
-	<%-- <p>
-    <form:label path="tags">Tags: </form:label>
-	<form:errors path="tags" />
-	<form:input path="tags" />
-	</p> --%>
+	<p>
+    <form:label path="tagString">Tags: </form:label>
+	<form:errors path="tagString" />
+	<form:input path="tagString" />
+	</p>
     <input type="submit" value="Create"/>
 </form:form>
 </body>

@@ -1,5 +1,6 @@
 package com.codingdojo.ninjasdojos.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.ninjasdojos.models.Dojo;
 import com.codingdojo.ninjasdojos.models.Ninja;
+import com.codingdojo.ninjasdojos.models.Tag;
 import com.codingdojo.ninjasdojos.services.DojoService;
 import com.codingdojo.ninjasdojos.services.NinjaService;
 import com.codingdojo.ninjasdojos.services.TagService;
@@ -30,9 +32,7 @@ public class NinjaDojoController {
 		this.tagService = tagService;
 	}
 	@RequestMapping("/dojos/new")
-	public String index(Model model) {
-		Dojo dojo = new Dojo();
-		model.addAttribute("dojo", dojo);
+	public String index(@ModelAttribute("dojo") Dojo dojo) {
 		return "new_dojo.jsp";
 	}
 	@RequestMapping("/create_dojo")
@@ -40,8 +40,16 @@ public class NinjaDojoController {
 		if (result.hasErrors()) {
             return "new_dojo.jsp";
         } else {
-            Dojo new_dojo = dojoService.createDojo(dojo);
-            return "redirect:/dojos/"+new_dojo.getId();
+        	String[] tags_split = dojo.getTagString().trim().split("\\s*,\\s*");
+        	ArrayList<Tag> tags = new ArrayList<Tag>();
+        	for (int i=0; i<tags_split.length;i++) {
+        		Tag new_tag = new Tag(tags_split[i]);
+        		tagService.createTag(new_tag);
+        		tags.add(new_tag);
+           }
+        	dojo.setTags(tags);
+        	Dojo new_dojo = dojoService.createDojo(dojo);
+        	return "redirect:/dojos/"+new_dojo.getId();
         }
 	}
 	@RequestMapping("/dojos/{id}")
