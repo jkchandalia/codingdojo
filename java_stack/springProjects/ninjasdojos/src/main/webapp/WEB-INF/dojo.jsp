@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<c:out value="${dojoNinja[0][0].name}" />
 <table>
     <thead>
         <tr>
@@ -19,11 +19,18 @@
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${dojo.ninjas}" var="ninja">
+        <%-- <c:forEach items="${dojo.ninjas}" var="ninja">
         <tr>
             <td><c:out value="${ninja.first_name}"/></a></td>
             <td><c:out value="${ninja.last_name}"/></td>
             <td><c:out value="${ninja.age}"/></td>
+        </tr>
+        </c:forEach> --%>
+        <c:forEach items="${dojoNinja}" var="dN">
+        <tr>
+            <td><c:out value="${dN[1].first_name}"/></a></td>
+            <td><c:out value="${dN[1].last_name}"/></td>
+            <td><c:out value="${dN[1].age}"/></td>
         </tr>
         </c:forEach>
     </tbody>

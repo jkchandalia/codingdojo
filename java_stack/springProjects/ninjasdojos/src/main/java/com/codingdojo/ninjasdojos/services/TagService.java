@@ -33,6 +33,15 @@ public class TagService {
 	            return null;
 	        }
 	    }
+	 // retrieves a tag
+	    public Tag findTagByName(String tag) {
+	        Optional<Tag> optionalTag = tagRepository.findByTag(tag);
+	        if(optionalTag.isPresent()) {
+	            return optionalTag.get();
+	        } else {
+	            return null;
+	        }
+	    }
 		public void deleteTag(Long id) {
 			tagRepository.deleteById(id);
 			

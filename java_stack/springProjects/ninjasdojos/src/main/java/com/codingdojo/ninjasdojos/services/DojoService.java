@@ -41,4 +41,16 @@ public class DojoService {
 			dojoRepository.save(dojo);
 			return null;
 		}
+		public List<Object[]> getAllDojosWithNinjas(){
+			return dojoRepository.dojoAndNinjaJoin();
+		}
+		public List<Object[]> getAllDojosWithTags(){
+			return dojoRepository.dojoAndTagJoin();
+		}
+		public List<Object[]> getAllDojosWithTagsByID(Long id){
+			return dojoRepository.getDojoAndTagWhereId(id);
+		}
+		public List<Object[]> getAllDojosWithNinjasByID(Long id){
+			return dojoRepository.getDojoAndNinjaWhereId(id);
+		}
 }

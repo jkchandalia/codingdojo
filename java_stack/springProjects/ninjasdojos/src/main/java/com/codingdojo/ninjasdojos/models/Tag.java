@@ -21,7 +21,7 @@ public class Tag {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	@Size(min = 3, max = 255)
+	@Size(min = 1, max = 255)
     private String tag;
 	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
