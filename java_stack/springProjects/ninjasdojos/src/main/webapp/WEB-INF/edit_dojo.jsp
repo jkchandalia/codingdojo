@@ -25,13 +25,13 @@
 	<input type="submit" value="Add Tag"/>
 	</form:form>
 	
-<form:form action="/add_tag2" method="post" modelAttribute="tag">
+<form:form action="/add_tag2/${dojo.id}" method="post" modelAttribute="tag">
     
     <p>
-    <form:label path="tag">Add Tag: </form:label>
-	<form:errors path="tag" />
+    <form:label path="id">Add Tag: </form:label>
+	<form:errors path="id" />
 	<c:forEach items="${other_tags}" var="other_tag">
-	<form:checkbox path="tag" value="${other_tag.id}" />
+	<form:checkbox path="id" value="${other_tag.id}" />
 	<c:out value="${other_tag.tag}"/>
 	</c:forEach>	
 	</p>

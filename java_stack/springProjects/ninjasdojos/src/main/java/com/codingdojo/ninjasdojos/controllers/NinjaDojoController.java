@@ -117,4 +117,14 @@ public class NinjaDojoController {
 		dojoService.updateDojo(dojo);
 		return "redirect:/dojos/all";
 	}
+	@RequestMapping("/add_tag2/{dojo_id}")
+	public String add_tag2(@Valid @ModelAttribute("tag") Tag tag, @PathVariable("dojo_id") Long id) {
+		Dojo dojo = dojoService.findDojo(id);
+		Tag add_tag = tagService.findTag(tag.getId());
+		List<Tag> tags =  dojo.getTags();
+		tags.add(add_tag);
+		dojo.setTags(tags);
+		dojoService.updateDojo(dojo);
+		return "redirect:/dojos/all";
+	}
 }
