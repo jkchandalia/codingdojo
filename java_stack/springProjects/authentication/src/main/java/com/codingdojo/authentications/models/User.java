@@ -22,7 +22,7 @@ public class User {
     private Long id;
     @Email
     private String email;
-    @Size(min=4, max=10)
+    @Size(min = 3, max = 255)
     private String password;
     @Transient
     private String passwordConfirmation;

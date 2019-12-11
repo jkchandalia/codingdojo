@@ -34,23 +34,35 @@ public class UserController {
     }
     
     @RequestMapping(value="/registration", method=RequestMethod.POST)
-    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session) {
-    	// if result has errors, return the registration page (don't worry about validations just now)
-        // else, save the user in the database, save the user id in session, and redirect them to the /home route
+    public String registerUser(
+    		@Valid @ModelAttribute("user") User user, 
+    		BindingResult result, 
+    		HttpSession session,
+    		RedirectAttributes redirectAttr) {
+//    	 if result has errors, return the registration page (don't worry about validations just now)
+//         else, save the user in the database, save the user id in session, and redirect them to the /home route
     	if (result.hasErrors()){
-    		return "registrationPage.jsp";
+    		return "redirect:/registration";
     		}
-    	else {
+    	else if (user.getPassword().equals(user.getPasswordConfirmation())) {
+    		System.out.println("got here!");
     		User new_user = userService.registerUser(user);
     		session.setAttribute("loggedIn", true);
     		session.setAttribute("userId", new_user.getId());
-    		return "redirect:/home";
+    		return "redirect:/home";}
+    	else {
+    		redirectAttr.addFlashAttribute("error", "Password and confirmation do not match.");
+    		return "redirect:/registration";
     	}
     	}
     
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model, 
-    		HttpSession session, RedirectAttributes redirectAttr) {
+    public String loginUser(
+    		@RequestParam("email") String email, 
+    		@RequestParam("password") String password, 
+    		Model model, 
+    		HttpSession session, 
+    		RedirectAttributes redirectAttr) {
         // if the user is authenticated, save their user id in session
         // else, add error messages and return the login page
     	User user = userService.findByEmail(email);
