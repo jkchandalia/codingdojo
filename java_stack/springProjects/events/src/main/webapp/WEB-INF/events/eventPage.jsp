@@ -39,6 +39,11 @@
 <c:out value="${msg[1].message}"/>
 <br>
 </c:forEach>
+
+<p>Message Board</p>
+<c:forEach items="${event_messages}" var="msg">
+<p><c:out value="${msg[1].message}"/></p>
+</c:forEach>
 <p>Add Comment:</p>
 <form:form action="/events/add/${event.id}" method="POST" modelAttribute="message">
 <form:label path="message"></form:label>
