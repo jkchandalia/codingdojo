@@ -132,6 +132,7 @@ public class UserController {
     	Event event = eventService.findEvent(event_id);
     	Integer num_attendees = event.getAttendees().size();
     	model.addAttribute("num_attendees", num_attendees);
+    	model.addAttribute("event",event);
     	return "events/eventPage.jsp";
     }
     @RequestMapping(value="/events/{event_id}/edit")
@@ -252,7 +253,7 @@ public class UserController {
 
     	return "redirect:/events";
     }
-    @RequestMapping("/eventsadd/{event_id}")
+    @RequestMapping("/events/add/{event_id}")
     public String addMessage(HttpSession session, Model model, @PathVariable("event_id") Long event_id,
     		@Valid @ModelAttribute("msg") Message msg) {
         // get user from session, save them in the model and return the home page

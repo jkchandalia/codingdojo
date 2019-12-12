@@ -40,7 +40,7 @@
 <br>
 </c:forEach>
 <p>Add Comment:</p>
-<form:form action="/eventsadd/${event.id}" method="POST" modelAttribute="message">
+<form:form action="/events/add/${event.id}" method="POST" modelAttribute="message">
 <form:label path="message"></form:label>
 <form:input path="message"/>
 
