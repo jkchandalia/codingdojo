@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import com.codingdojo.authentications.models.Message;
 import com.codingdojo.authentications.models.User;
 import com.codingdojo.authentications.repositories.UserRepository;
 
@@ -56,7 +57,10 @@ public class UserService {
         }
     }
 
-
+    public Message updateUser(User user) {	
+    	userRepository.save(user);
+		return null;
+	}
         
     public User createUser(@Valid User user) {
 		// TODO Auto-generated method stub

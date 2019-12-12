@@ -16,4 +16,7 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 	@Query("SELECT e, l  FROM Event e JOIN e.location l JOIN e.user u WHERE l.state <> ?1")
 	List<Object[]> eventAndLocationByNotState(String state);
 	
+	@Query("SELECT e, m  FROM Event e JOIN e.messages m WHERE e.id = ?1")
+	List<Object[]> eventAndMessagesById(Long event_id);
+	
 }

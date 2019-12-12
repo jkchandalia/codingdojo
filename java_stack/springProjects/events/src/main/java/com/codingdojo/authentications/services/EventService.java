@@ -26,6 +26,10 @@ public class EventService {
         return eventRepository.eventAndLocationByNotState(state);
     }
     
+    public List<Object[]> eventAndMessagesById(Long event_id) {
+        return eventRepository.eventAndMessagesById(event_id);
+    }
+    
     
     // creates a event
     public Event createEvent(Event b) {

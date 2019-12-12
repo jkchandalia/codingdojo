@@ -30,7 +30,30 @@
 	<td><c:out value="${event[0].date }" /></td>
 	<td><c:out value="${event[1].city }" /></td>
 	<td><c:out value="${event[2].first_name }" /></td>
-	<td><c:if test="${event[2].id==user.id}">Edit Delete</c:if></td>
+	<td><c:if test="${event[2].id==user.id}">
+	
+	<a href="/events/${event[0].id}/edit">Edit</a>
+	<form action="/events/${event[0].id}/delete" method="POST">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+	</form>
+	</c:if>
+	
+	<c:if test="${event[2].id!=user.id}">
+	<c:set var="attending" value="false" />
+	<c:forEach items="${event[0].attendees}" var="attendee">
+	<c:if test="${attendee.id==user.id}">
+	<c:set var="attending" value="true" />
+	</c:if>
+	</c:forEach>
+	<c:if test="${attending== 'true'}">
+	Joining <a href="/events/${event[0].id}/cancel">Cancel</a>
+	</c:if>
+	<c:if test="${attending== 'false'}">
+	<a href="/events/${event[0].id}/join">Join</a>
+	</c:if>
+	</c:if>
+	
 	</tr>
 	</c:forEach>
 	</tbody>
@@ -55,7 +78,31 @@
 	<td><c:out value="${event[1].city }" /></td>
 	<td><c:out value="${event[1].state }" /></td>
 	<td><c:out value="${event[2].first_name }" /></td>
-	<td>Join Joining Cancel</td>
+	<td>
+	<c:if test="${event[2].id==user.id}">
+	<a href="events/${event[0].id}/edit">Edit</a>
+	<form action="events/${event[0].id}/delete" method="POST">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+	</form>
+	
+	</c:if>
+	
+	<c:if test="${event[2].id!=user.id}">
+	<c:set var="attending" value="false" />
+	<c:forEach items="${event[0].attendees}" var="attendee">
+	<c:if test="${attendee.id==user.id}">
+	<c:set var="attending" value="true" />
+	</c:if>
+	</c:forEach>
+	<c:if test="${attending== 'true'}">
+	Joining <a href="/events/${event[0].id}/cancel">Cancel</a>
+	</c:if>
+	<c:if test="${attending== 'false'}">
+	<a href="/events/${event[0].id}/join">Join</a>
+	</c:if>
+	</c:if>
+	</td>
 	</tr>
 	</c:forEach>
 	</tbody>

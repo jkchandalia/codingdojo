@@ -1,7 +1,7 @@
 package com.codingdojo.authentications.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.codingdojo.authentications.models.Event;
 import com.codingdojo.authentications.models.Location;
+import com.codingdojo.authentications.models.Message;
 import com.codingdojo.authentications.models.User;
 import com.codingdojo.authentications.services.EventService;
 import com.codingdojo.authentications.services.LocationService;
@@ -119,20 +120,103 @@ public class UserController {
     	return "events/homePage.jsp";
     }
     @RequestMapping("/events/{event_id}")
-    public String event(HttpSession session, Model model, @PathVariable("event_id") Long event_id) {
+    public String event(HttpSession session, Model model, 
+    		@PathVariable("event_id") Long event_id,
+    		@ModelAttribute("message") Message message) {
         // get user from session, save them in the model and return the home page
     	Long id = (Long) session.getAttribute("userId");
     	User user = userService.findUserById(id);
     	model.addAttribute("user", user);
-    	return "event/eventPage.jsp";
+    	List<Object[]> event_messages = eventService.eventAndMessagesById(event_id);
+    	model.addAttribute("event_messages", event_messages);
+    	Event event = eventService.findEvent(event_id);
+    	Integer num_attendees = event.getAttendees().size();
+    	model.addAttribute("num_attendees", num_attendees);
+    	return "events/eventPage.jsp";
     }
-    @RequestMapping("/events/{event_id}/edit")
-    public String eventEdit(HttpSession session, Model model, @PathVariable("event_id") Long event_id) {
+    @RequestMapping(value="/events/{event_id}/edit")
+    public String eventEditRender(HttpSession session, Model model, 
+    		@PathVariable("event_id") Long event_id) {
         // get user from session, save them in the model and return the home page
     	Long id = (Long) session.getAttribute("userId");
     	User user = userService.findUserById(id);
+    	Event event =eventService.findEvent(event_id);
+    	event.setStateString(event.getLocation().getState());
+    	event.setCityString(event.getLocation().getCity());
     	model.addAttribute("user", user);
-    	return "event/eventEdit.jsp";
+    	model.addAttribute("event", event);
+    	return "events/eventEdit.jsp";
+    }
+    
+    @RequestMapping(value="/events/{event_id}/edit", method=RequestMethod.PUT)
+    public String eventEdit(HttpSession session, Model model, 
+    		@PathVariable("event_id") Long event_id,
+    		@Valid @ModelAttribute("event") Event event,
+    		BindingResult result,
+    		RedirectAttributes redirectAttr) {
+    	Event original_event = eventService.findEvent(event_id);
+    	if (result.hasErrors()){
+    		return "redirect:/events/"+event_id+"/edit";
+    		}
+    	else if (!original_event.getUser().getId().equals(session.getAttribute("userId"))){
+    		redirectAttr.addFlashAttribute("error", "You do not have permissions to edit event");
+    		return "redirect:/events/"+event_id+"/edit";
+    	} else {
+        // get user from session, save them in the model and return the home page
+    	Location location = locationService.findByCityAndState(event.getCityString(), event.getStateString());
+		if (location == null) {
+			Location new_location = new Location(event.getCityString(),event.getStateString());
+			Location new_loc = locationService.createLocation(new_location);
+			event.setLocation(new_loc);	
+		} else {
+			event.setLocation(location);
+		}
+		original_event.setLocation(location);
+		original_event.setName(event.getName());
+		original_event.setDate(event.getDate());
+		
+    	eventService.updateEvent(original_event);
+    	return "redirect:/events";}
+    }
+    @RequestMapping(value="/events/{event_id}/cancel")
+    public String eventCancel(HttpSession session, Model model, @PathVariable("event_id") Long event_id) {
+        // get user from session, save them in the model and return the home page
+    	Long id = (Long) session.getAttribute("userId");
+    	User user = userService.findUserById(id);
+    	Event event = eventService.findEvent(event_id);
+    	List<User> attendees = event.getAttendees();
+    	attendees.remove(user);
+    	event.setAttendees(attendees);
+    	eventService.updateEvent(event);
+    	return "redirect:/events";
+    }
+    
+    @RequestMapping(value="/events/{event_id}/join")
+    public String eventJoin(HttpSession session, Model model, @PathVariable("event_id") Long event_id) {
+        // get user from session, save them in the model and return the home page
+    	Long id = (Long) session.getAttribute("userId");
+    	User user = userService.findUserById(id);
+    	Event event = eventService.findEvent(event_id);
+    	List<User> attendees =event.getAttendees();
+    	attendees.add(user);
+    	event.setAttendees(attendees);
+    	eventService.updateEvent(event);
+    	List<Event> events =  user.getEvents();
+    	events.add(event);
+    	user.setEvents(events); 
+    	userService.updateUser(user);
+    	return "redirect:/events";
+    }
+    @RequestMapping(value="/events/{event_id}/delete", method=RequestMethod.DELETE)
+    public String eventDelete(HttpSession session, Model model, @PathVariable("event_id") Long event_id) {
+        // get user from session, save them in the model and return the home page
+    	Long id = (Long) session.getAttribute("userId");
+    	User user = userService.findUserById(id);
+    	Event event = eventService.findEvent(event_id);
+    	if (user.getId()==event.getUser().getId()) {
+    		eventService.deleteEvent(id);
+    	}
+    	return "redirect:/events";
     }
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
@@ -168,4 +252,18 @@ public class UserController {
 
     	return "redirect:/events";
     }
+    @RequestMapping("/eventsadd/{event_id}")
+    public String addMessage(HttpSession session, Model model, @PathVariable("event_id") Long event_id,
+    		@Valid @ModelAttribute("msg") Message msg) {
+        // get user from session, save them in the model and return the home page
+    	Long id = (Long) session.getAttribute("userId");
+    	User user = userService.findUserById(id);
+    	Event event = eventService.findEvent(event_id);
+    	msg.setEvent(event);
+    	msg.setWrittenBy(user);
+    	messageService.createMessage(msg);
+    	
+    	return "redirect:/events/"+event_id;
+    }
+    
 }
