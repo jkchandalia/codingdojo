@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.codingdojo.authentications.models.Event;
 import com.codingdojo.authentications.models.Location;
 import com.codingdojo.authentications.repositories.LocationRepository;
 
@@ -18,6 +19,15 @@ public class LocationService {
 	// returns all the locations
     public List<Location> allLocations() {
         return locationRepository.findAll();
+    }
+ // retrieves a event
+    public Location findByCityAndState(String city, String state) {
+        Optional<Location> optionalLocation = locationRepository.findByCityAndState(city,state);
+        if(optionalLocation.isPresent()) {
+            return optionalLocation.get();
+        } else {
+            return null;
+        }
     }
     
     // creates a location

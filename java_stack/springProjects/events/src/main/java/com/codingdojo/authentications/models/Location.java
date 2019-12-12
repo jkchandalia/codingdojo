@@ -27,7 +27,7 @@ public class Location {
     private Long id;
     @Size(min=3, max=30)
     private String city;
-    @Size(min = 3, max = 20)
+    @Size(min = 1, max = 20)
     private String state;
     @Column(updatable=false)
     private Date createdAt;

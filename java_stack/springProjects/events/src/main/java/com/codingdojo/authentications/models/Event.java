@@ -17,12 +17,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import com.codingdojo.authentications.models.Message;
-import com.codingdojo.authentications.models.Location;
-import com.codingdojo.authentications.models.User;
 
 @Entity
 @Table(name="event")
@@ -32,7 +30,37 @@ public class Event {
     private Long id;
     @Size(min=5, max=30)
     private String name;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Size(min=1, max=30)
+    @Transient
+    private String stateString;
+    @Transient
+    @Size(min=5, max=30)
+    private String cityString;
+    public String getStateString() {
+		return stateString;
+	}
+
+	public void setStateString(String stateString) {
+		this.stateString = stateString;
+	}
+
+	public String getCityString() {
+		return cityString;
+	}
+
+	public void setCityString(String cityString) {
+		this.cityString = cityString;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
+	@DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date;
     @Column(updatable=false)
     private Date createdAt;

@@ -2,32 +2,80 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
+    
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Registration Page</title>
+	<meta charset="UTF-8">
+	<title>Welcome</title>
 </head>
 <body>
-    <h1>Register!</h1>
-    <p><c:out value="${error}" /></p>
-    <p><form:errors path="user.*"/></p>
+	<h1>Welcome, <c:out value="${user.first_name}" /></h1>
+	<a href="/logout">Logout</a>
+		<h3>Here are some of the events in your state:</h3>
+	<table>
+	<thead>
+	<tr>
+	<th>Name</th>
+	<th>Date</th>
+	<th>Location</th>
+	<th>Host</th>
+	<th>Action/Status</th>
+	</tr>
+	</thead>
+	<tbody>
+	<c:forEach items="${events_in_state}" var="event">
+	<tr>
+	<td><c:out value="${event[0].name }" /></td>
+	<td><c:out value="${event[0].date }" /></td>
+	<td><c:out value="${event[1].city }" /></td>
+	<td><c:out value="${event[2].first_name }" /></td>
+	<td><c:if test="${event[2].id==user.id}">Edit Delete</c:if></td>
+	</tr>
+	</c:forEach>
+	</tbody>
+	</table>
+
+	<table>
+	<thead>
+	<tr>
+	<th>Name</th>
+	<th>Date</th>
+	<th>Location</th>
+	<th>State</th>
+	<th>Host</th>
+	<th>Action/Status</th>
+	</tr>
+	</thead>
+	<tbody>
+	<c:forEach items="${events_not_in_state}" var="event">
+	<tr>
+	<td><c:out value="${event[0].name }" /></td>
+	<td><c:out value="${event[0].date }" /></td>
+	<td><c:out value="${event[1].city }" /></td>
+	<td><c:out value="${event[1].state }" /></td>
+	<td><c:out value="${event[2].first_name }" /></td>
+	<td>Join Joining Cancel</td>
+	</tr>
+	</c:forEach>
+	</tbody>
+	</table>
+	
+	
+	<p><c:out value="${error}" /></p>
+    <p><form:errors path="event.*"/></p>
     
-    <form:form method="POST" action="/registration" modelAttribute="user">
+    <form:form method="POST" action="/create_event" modelAttribute="event">
         <p>
-            <form:label path="first_name">First Name:</form:label>
-            <form:input path="first_name"/>
+            <form:label path="name">Name:</form:label>
+            <form:input path="name"/>
         </p>
         <p>
-            <form:label path="last_name">Last Name:</form:label>
-            <form:input path="last_name"/>
+            <form:label path="date">Date:</form:label>
+            <form:input type="date" path="date"/>
         </p>
         <p>
-            <form:label path="email">Email:</form:label>
-            <form:input type="email" path="email"/>
-        </p>
-         <p>
-            <form:label path="cityString">City:</form:label>
+            <form:label path="cityString">Location:</form:label>
             <form:input path="cityString"/>
         </p>
         <p>
@@ -85,15 +133,8 @@
                     <form:option value="WY">Wyoming</form:option>
                 </form:select>
             </p>
-        <p>
-            <form:label path="password">Password:</form:label>
-            <form:password path="password"/>
-        </p>
-        <p>
-            <form:label path="passwordConfirmation">Password Confirmation:</form:label>
-            <form:password path="passwordConfirmation"/>
-        </p>
-        <input type="submit" value="Register!"/>
+        
+        <input type="submit" value="Create!"/>
     </form:form>
     
 </body>

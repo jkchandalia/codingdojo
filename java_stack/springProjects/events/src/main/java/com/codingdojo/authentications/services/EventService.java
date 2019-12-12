@@ -19,6 +19,13 @@ public class EventService {
     public List<Event> allEvents() {
         return eventRepository.findAll();
     }
+    public List<Object[]> eventAndLocationByState(String state) {
+        return eventRepository.eventAndLocationByState(state);
+    }
+    public List<Object[]> eventAndLocationByNotState(String state) {
+        return eventRepository.eventAndLocationByNotState(state);
+    }
+    
     
     // creates a event
     public Event createEvent(Event b) {

@@ -21,10 +21,6 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
-import com.codingdojo.authentications.models.Message;
-import com.codingdojo.authentications.models.Location;
-import com.codingdojo.authentications.models.Event;
-
 @Entity
 @Table(name="users")
 public class User {
@@ -34,12 +30,20 @@ public class User {
     @Email
     private String email;
     @Size(min = 3, max = 255)
+    private String first_name;
+    @Size(min = 3, max = 255)
+    private String last_name;
+    @Size(min = 3, max = 255)
     private String password;
     @Transient
     private String passwordConfirmation;
     @Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
+    @Transient
+    private String cityString;
+    @Transient
+    private String stateString;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="location_id")
     private Location location;
@@ -136,6 +140,70 @@ public class User {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public List<Event> getEventsCreated() {
+		return eventsCreated;
+	}
+
+	public void setEventsCreated(List<Event> eventsCreated) {
+		this.eventsCreated = eventsCreated;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
+	public String getFirst_name() {
+		return first_name;
+	}
+
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public String getLast_name() {
+		return last_name;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
+	}
+
+	public String getCityString() {
+		return cityString;
+	}
+
+	public void setCityString(String cityString) {
+		this.cityString = cityString;
+	}
+
+	public String getStateString() {
+		return stateString;
+	}
+
+	public void setStateString(String stateString) {
+		this.stateString = stateString;
 	}
 
 }
