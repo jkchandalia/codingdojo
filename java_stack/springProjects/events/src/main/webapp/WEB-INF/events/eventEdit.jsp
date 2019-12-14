@@ -16,7 +16,7 @@
     <p><c:out value="${error}" /></p>
     <p><form:errors path="event.*"/></p>
     
-    <form:form method="POST" action="/events/${event.id}/edit" modelAttribute="event">
+    <form:form method="POST" action="/tasks/${event.id}/edit" modelAttribute="event">
     	<input type="hidden" name="_method" value="put">
         <p>
             <form:label path="name">Name:</form:label>
