@@ -58,8 +58,6 @@ public class UserController {
     		BindingResult result, 
     		HttpSession session,
     		RedirectAttributes redirectAttr) {
-//    	 if result has errors, return the registration page (don't worry about validations just now)
-//         else, save the user in the database, save the user id in session, and redirect them to the /home route
     	if (result.hasErrors()){
     		return "redirect:/registration";
     		}
@@ -163,7 +161,6 @@ public class UserController {
     		redirectAttr.addFlashAttribute("error", "You do not have permissions to edit event");
     		return "redirect:/events/"+event_id+"/edit";
     	} else {
-        // get user from session, save them in the model and return the home page
     	Location location = locationService.findByCityAndState(event.getCityString(), event.getStateString());
 		if (location == null) {
 			Location new_location = new Location(event.getCityString(),event.getStateString());
@@ -181,7 +178,6 @@ public class UserController {
     }
     @RequestMapping(value="/events/{event_id}/cancel")
     public String eventCancel(HttpSession session, Model model, @PathVariable("event_id") Long event_id) {
-        // get user from session, save them in the model and return the home page
     	Long id = (Long) session.getAttribute("userId");
     	User user = userService.findUserById(id);
     	Event event = eventService.findEvent(event_id);
